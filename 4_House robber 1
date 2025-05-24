@@ -34,7 +34,7 @@ public class dp_3 {
         System.out.println(result);
     }*/
 
-    public static int House_rob_1(int nums[],int n ,int memo[]){                      //tanulation
+    public static int House_rob_1(int nums[],int n ,int memo[]){                      //memorization
         if(n==0){
             return nums[0];
         }
