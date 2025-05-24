@@ -49,3 +49,12 @@ public class dp_1 {
 /*Recursion (no memo)	O(2^n)	O(n) (call stack)	Exponential calls; recursion depth up to n
 Memoization (top-down DP)	O(n)	O(n) (memo array + call stack)	Each state computed once; recursion stack depth n
 Iterative DP (bottom-up)	O(n)	O(n) (dp array)	Loop from 2 to n; array stores results*/
+
+/*                        climb(4) = 5
+                      /               \
+            climb(3) = 3            climb(2) = 2
+             /       \               /       \
+   climb(2) = 2   climb(1) = 1  climb(1)=1  climb(0)=1
+     /    \
+climb(1)=1 climb(0)=1
+*/
