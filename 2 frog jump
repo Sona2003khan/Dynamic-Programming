@@ -65,3 +65,18 @@ public class dp_2 {
     }
 
 }
+
+/*Time Complexity: O(2^n) for recursion; optimized to O(n) with memoization or DP.
+Space Complexity: O(n) for recursion/memoization; reduced to O(1) with space-optimized DP.*/
+
+
+/*                           frog(3) = 20
+                          /         \
+                 frog(2)=20      frog(1)=10
+                   /     \             \
+        frog(1)=10     frog(0)=0     frog(0)=0
+             |              |              |
+           base=0        base=0         base=0
+*/
+
+
