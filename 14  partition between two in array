@@ -1,0 +1,122 @@
+import java.util.HashMap;
+
+public class dp_14 {
+    /*public boolean canPartition(int[] nums) {                               //recursion
+
+        int totalSum=0;
+        for(int num : nums){
+            totalSum += num;
+        }
+        int target = totalSum /2;
+        if(totalSum % 2 != 0){
+            return false;
+        }
+
+        return helper(nums ,nums.length-1 ,0 ,target);
+        
+    }
+
+    public static boolean helper(int nums[] ,int n ,int currentSum ,int target) {
+
+        if(n < 0 || currentSum > target){
+            return false;
+        }
+
+        if(currentSum == target){
+            return true;
+        }
+
+        boolean left = helper(nums ,n-1 ,currentSum + nums[n] ,target);
+
+        boolean right =helper(nums ,n-1 ,currentSum ,target);
+
+        return left || right;
+    }*/
+
+    /*public static boolean canPartition(int[] nums) {                               //memorization
+
+        int totalSum=0;
+        for(int num : nums){
+            totalSum += num;
+        }
+        int target = totalSum /2;
+        if(totalSum % 2 != 0){
+            return false;
+        }
+
+        HashMap<String ,Boolean> memo=new HashMap<>();
+
+        return helper(nums ,nums.length-1 ,0 ,target ,memo);
+        
+    }
+
+    public static boolean helper(int nums[] ,int n ,int currentSum ,int target ,HashMap<String ,Boolean> memo) {
+
+        if(n < 0 || currentSum > target){
+            return false;
+        }
+
+        if(currentSum == target){
+            return true;
+        }
+
+        String key=n+" "+currentSum;
+
+        boolean left = helper(nums ,n-1 ,currentSum + nums[n] ,target ,memo);
+
+        boolean right =helper(nums ,n-1 ,currentSum ,target ,memo);
+
+        boolean ans= left || right;
+        memo.put(key, ans);
+        return ans;
+    }
+
+    public static void main(String[] args) {
+        int nums[]={5,1,5,11};
+        
+        boolean result=canPartition(nums);
+        System.out.println(result);
+    }*/
+
+    public static boolean canPartition(int[] nums) {                               //tabulation
+
+        int totalSum=0;
+        for(int num : nums){
+            totalSum += num;
+        }
+        int target = totalSum /2;
+        if(totalSum % 2 != 0){
+            return false;
+        }
+
+        boolean memo[]=new boolean[target+1];
+        memo[0]=true;
+
+        for (int num : nums) {
+           for (int i = target; i >= num; i--) {
+              memo[i] = memo[i] || memo[i - num];
+            }
+        }
+        return memo[target];
+    }  
+    public static void main(String[] args) {
+        int nums[]={5,1,5,11};
+        
+        boolean result=canPartition(nums);
+        System.out.println(result);
+    }  
+}
+
+
+
+/*                             helper(3, 0)
+                            /           \
+          include 11 → helper(2, 11)   exclude 11 → helper(2, 0)
+               (✓ target reached)          /            \
+                                 include 5 → helper(1, 5)   exclude 5 → helper(1, 0)
+                                  /           \                 /          \
+                   include 1 → helper(0, 6) exclude 1 → helper(0, 5)  include 1 → helper(0, 1) exclude 1 → helper(0, 0)
+                     /          \                 /        \            /          \               /         \
+       include 5 helper(-1,11) exclude 5 helper(-1,6) include 5 helper(-1,10) exclude 5 helper(-1,5) include 5 helper(-1,6) exclude 5 helper(-1,1) include 5 helper(-1,5) exclude 5 helper(-1,0)
+        (✓)             (x)          (x)           (x)           (x)           (x)          (x)           (x)         (x)          (x)          (x)           (x)
+*/
