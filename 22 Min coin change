@@ -3,7 +3,7 @@ import java.util.Arrays;
 public class dp_22 {
 
     /*public static int min_coin(int coins[] ,int amount){
-        Integer[] memo = new Integer[amount + 1];
+        Integer[] memo = new Integer[amount + 1]; 
         return helper(coins, amount, memo);
     }
 
