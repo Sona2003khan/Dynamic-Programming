@@ -1,6 +1,6 @@
 import java.util.Arrays;
 
-public class dp_22 {
+public class dp_22 { 
 
     /*public static int min_coin(int coins[] ,int amount){
         Integer[] memo = new Integer[amount + 1]; 
